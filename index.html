@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Women's Day Card for Alyssa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Pacifico&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="background-blush" aria-hidden="true"></div>
+
+    <main class="scene">
+        <section class="card" role="article" aria-label="Women's Day card for Alyssa">
+            <p class="tag">8 March 2026 • Women's Day</p>
+
+            <h1>
+                Happy Women’s Day,
+                <span>Alyssa</span> 💖
+            </h1>
+
+            <p class="message">
+                To a very sophisticated woman with beautiful long hair, graceful energy, and a lovely
+                heart — you are deeply appreciated.
+            </p>
+
+            <p class="message">
+                May your day feel as sweet and bright as the joy you bring to everyone around you.
+            </p>
+
+            <div class="mini-icons" aria-hidden="true">
+                <span>🌸</span>
+                <span>🧁</span>
+                <span>✨</span>
+            </div>
+
+            <p class="signature">With admiration & joy</p>
+
+            <button class="easter-egg-trigger" id="easterEggBtn" title="Click me! ✨">
+                ✨
+            </button>
+        </section>
+    </main>
+
+    <!-- Easter Egg Modal -->
+    <div class="easter-egg-modal" id="easterEggModal">
+        <div class="modal-content">
+            <p class="modal-question">Are you really a woman tho 🤨</p>
+            <div class="modal-buttons">
+                <button class="modal-btn yes-btn" id="yesBtn">Yes 💁‍♀️</button>
+                <button class="modal-btn no-btn" id="noBtn">No 😳</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dishwasher Mode -->
+    <div class="dishwasher-mode" id="dishwasherMode">
+        <div class="dishwasher-content">
+            <div class="dishwasher-img">🍽️🧽🫧</div>
+            <p class="dishwasher-text">Well then... get to work! 💅</p>
+            <button class="modal-btn back-btn" id="backBtn">I'm sorry! Take me back 😭</button>
+        </div>
+    </div>
+
+    <script>
+        const easterEggBtn = document.getElementById('easterEggBtn');
+        const easterEggModal = document.getElementById('easterEggModal');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const dishwasherMode = document.getElementById('dishwasherMode');
+        const backBtn = document.getElementById('backBtn');
+
+        easterEggBtn.addEventListener('click', () => {
+            easterEggModal.classList.add('show');
+        });
+
+        yesBtn.addEventListener('click', () => {
+            easterEggModal.classList.remove('show');
+            easterEggBtn.textContent = '💖';
+            easterEggBtn.style.animation = 'none';
+        });
+
+        noBtn.addEventListener('click', () => {
+            easterEggModal.classList.remove('show');
+            dishwasherMode.classList.add('show');
+        });
+
+        backBtn.addEventListener('click', () => {
+            dishwasherMode.classList.remove('show');
+            easterEggBtn.textContent = '✨';
+            easterEggBtn.style.animation = '';
+        });
+
+        // Close modal on outside click
+        easterEggModal.addEventListener('click', (e) => {
+            if (e.target === easterEggModal) {
+                easterEggModal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+
+</html>

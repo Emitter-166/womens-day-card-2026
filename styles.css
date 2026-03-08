@@ -1,0 +1,413 @@
+:root {
+    --pink-50: #fff7fb;
+    --pink-100: #ffeaf4;
+    --pink-200: #ffd8ea;
+    --pink-300: #ffc2df;
+    --pink-400: #ffabd4;
+    --pink-500: #ff8fc3;
+    --text-main: #5b3b4c;
+    --text-soft: #7c5b6e;
+    --card-shadow: 0 18px 42px rgba(255, 143, 195, 0.26);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Baloo 2", "Segoe UI", sans-serif;
+    color: var(--text-main);
+    background: radial-gradient(circle at 20% 15%, var(--pink-200), transparent 40%),
+        radial-gradient(circle at 80% 85%, var(--pink-300), transparent 35%),
+        linear-gradient(160deg, var(--pink-50), var(--pink-100));
+    overflow: hidden;
+}
+
+.background-blush {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.background-blush::before,
+.background-blush::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 194, 223, 0.45);
+    filter: blur(10px);
+    animation: drift 8s ease-in-out infinite;
+}
+
+.background-blush::before {
+    width: 150px;
+    height: 150px;
+    top: 12%;
+    left: 7%;
+}
+
+.background-blush::after {
+    width: 190px;
+    height: 190px;
+    bottom: 10%;
+    right: 8%;
+    animation-delay: -3s;
+}
+
+.scene {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+}
+
+.card {
+    width: min(92vw, 420px);
+    background: linear-gradient(180deg, #fffdfd, #fff5fa 55%, #ffeff7);
+    border: 2px solid #ffd3e8;
+    border-radius: 1.35rem;
+    padding: 1.2rem 1rem 1.25rem;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    position: relative;
+    animation: floaty 4.6s ease-in-out infinite;
+}
+
+.card::before,
+.card::after {
+    position: absolute;
+    content: "💗";
+    font-size: 1rem;
+    opacity: 0.9;
+    animation: sparkle 2.8s ease-in-out infinite;
+}
+
+.card::before {
+    top: 0.6rem;
+    left: 0.75rem;
+}
+
+.card::after {
+    right: 0.75rem;
+    bottom: 0.6rem;
+    animation-delay: -1.2s;
+}
+
+.tag {
+    margin: 0 0 0.5rem;
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    background: var(--pink-200);
+    border-radius: 999px;
+    color: #7b4364;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+}
+
+h1 {
+    margin: 0.2rem 0 0.65rem;
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    line-height: 1.2;
+    color: #7f365b;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+h1 span {
+    display: inline-block;
+    color: #d95197;
+    transform-origin: center bottom;
+    animation: tinyWave 2.6s ease-in-out infinite;
+}
+
+.message {
+    margin: 0.6rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-soft);
+}
+
+.mini-icons {
+    margin: 0.85rem 0 0.4rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.mini-icons span {
+    animation: bop 1.8s ease-in-out infinite;
+}
+
+.mini-icons span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.mini-icons span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.signature {
+    margin: 0.4rem 0 0;
+    font-size: 0.95rem;
+    color: #8e5b77;
+}
+
+@keyframes floaty {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes drift {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(12px, -10px) scale(1.05);
+    }
+}
+
+@keyframes tinyWave {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(-4deg);
+    }
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.88;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+@keyframes bop {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Easter Egg Trigger Button */
+.easter-egg-trigger {
+    position: absolute;
+    bottom: -12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd8ea, #ffb8d9);
+    cursor: pointer;
+    font-size: 0.9rem;
+    box-shadow: 0 3px 10px rgba(255, 143, 195, 0.4);
+    animation: wiggle 2s ease-in-out infinite;
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 10;
+}
+
+.easter-egg-trigger:hover {
+    transform: scale(1.2);
+    box-shadow: 0 5px 15px rgba(255, 143, 195, 0.6);
+}
+
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+/* Easter Egg Modal */
+.easter-egg-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(91, 59, 76, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+}
+
+.easter-egg-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(180deg, #fff5fa, #ffe8f3);
+    padding: 1.8rem 1.5rem;
+    border-radius: 1.2rem;
+    border: 2px solid #ffd3e8;
+    box-shadow: 0 20px 50px rgba(255, 143, 195, 0.35);
+    text-align: center;
+    max-width: 320px;
+    animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-question {
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1.2rem;
+    color: #7f365b;
+    margin: 0 0 1.2rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 999px;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #ff8fc3, #ff6ba8);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 143, 195, 0.4);
+}
+
+.no-btn {
+    background: linear-gradient(135deg, #e0e0e0, #c0c0c0);
+    color: #5b3b4c;
+    box-shadow: 0 4px 12px rgba(180, 180, 180, 0.4);
+}
+
+/* Dishwasher Mode */
+.dishwasher-mode {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #e8f4f8, #d0e8f0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+    z-index: 2000;
+}
+
+.dishwasher-mode.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dishwasher-content {
+    text-align: center;
+    animation: popIn 0.4s ease-out;
+}
+
+.dishwasher-img {
+    font-size: 4rem;
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px) rotate(-2deg);
+    }
+
+    75% {
+        transform: translateX(5px) rotate(2deg);
+    }
+}
+
+.dishwasher-text {
+    font-family: "Pacifico", cursive;
+    font-size: 1.8rem;
+    color: #4a7c8c;
+    margin: 1rem 0 1.5rem;
+}
+
+.back-btn {
+    background: linear-gradient(135deg, #ff8fc3, #ff6ba8);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 143, 195, 0.4);
+}
+
+@media (min-width: 640px) {
+    .card {
+        padding: 1.6rem 1.5rem 1.5rem;
+        border-radius: 1.5rem;
+    }
+
+    .message {
+        font-size: 1.05rem;
+    }
+}
